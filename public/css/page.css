@@ -1,0 +1,26 @@
+*{
+    margin: auto;
+    padding: auto;
+}
+
+body{
+    margin-top: 0px;
+    background-color: 	#F0FFFF;
+}
+
+body .imagem{        
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(#f3f3f3, #e2e2e2);
+    height: 70px;
+}
+
+.footer{
+    height: 50px;
+    width: 100%;
+    background-color: #282a2b;
+}
+
+#title{
+    margin: 10% 0 4% 0;
+}
