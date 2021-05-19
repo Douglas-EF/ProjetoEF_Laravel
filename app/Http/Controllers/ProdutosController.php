@@ -11,7 +11,7 @@ class ProdutosController extends Controller
 {
     public function index()
     {
-        $produtos = Produtos::where('fk_ativo', true)->get();
+        $produtos = Produtos::where('ativo_id', true)->get();
         return view('/produtos', compact('produtos'));
     }
 

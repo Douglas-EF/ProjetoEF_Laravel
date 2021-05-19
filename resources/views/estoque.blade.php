@@ -8,20 +8,30 @@
 <div class="row">
     <div class="col s12 m6 push-m3">
         <h3 id="title" class="light text">Estoque dos produtos</h3>
+
+        <form action="{{ route('estoque.search') }}" method="POST">
+            @csrf
+            <div class="input-field col s6">
+                <i class="material-icons prefix">search</i>
+                <input type="text" name="filtro" placeholder="Informe o nome do produto...">
+            </div>
+        </form>
+
         <table class="striped">
             <thead>
                 <tr>
                     <th class="text">Nome do Produto</th>
                     <th class="text">Quantidade</th>
-                    <th>E</th>
+                    <th></th>
+                    <th class="text"><a href="#" class="btn-floating waves-effect waves-light blue-grey"><i title="Exibir histórico de modificações"><img src="/img/historico.png"></i></a></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($estoque as $dados)
                 <tr>
-                    <td>{{$dados->produtos->nome}}</td>
-                    <td>{{$dados->quantidade}}</td>
-                    <td><a class="btn-floating waves-effect waves-light green modal-trigger" data-target="modal1"><i title="Aumentar estoque"><img src="/img/up_estoque.png"></i></a></td>
+                    <td>{{ $dados->produtos->nome }}</td>
+                    <td>{{ $dados->quantidade }}</td>
+                    <td><a class="btn-floating waves-effect waves-light green modal-trigger" href="#modal1"><i title="Aumentar estoque"><img src="/img/up_estoque.png"></i></a></td>
                     <td><a class="btn-floating waves-effect waves-light red modal-trigger" data-target="modal2"><i title="Abaixar estoque"><img src="/img/down_estoque.png"></i></a></td>
                 </tr>
                 @endforeach
@@ -34,7 +44,7 @@
     <div class="modal-content">
         <h4>UP Estoque</h4>
         <p>Informe a quantidade que deseja adicionar ao estoque:</p><br>
-        <form action="{{url('estoque/up')}}" method="POST">
+        <form action="{{url('estoque/update')}}/{{$dados->id}}" method="POST">
             @csrf
             <div class="row">
                 <div class="input-field col s4">

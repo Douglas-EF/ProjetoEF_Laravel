@@ -19,7 +19,7 @@
 
 
 <body>
-    <div class="imagem" >
+    <div class="imagem">
         <a href="/" tabindex="-1">
             <img class="image_logo" src="/img/logo-menu.png" title="Eficiência Fiscal" height="50%">
         </a>
@@ -38,6 +38,11 @@
 <script>
     const elemsModal = document.querySelectorAll(".modal");
     const instancesModal = M.Modal.init(elemsModal);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
 </script>
 
 </html>

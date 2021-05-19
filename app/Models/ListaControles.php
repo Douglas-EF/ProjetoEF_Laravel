@@ -12,6 +12,6 @@ class ListaControles extends Model
 
     public function Ativo()
     {
-        return $this->belongsTo(Ativos::class, 'fk_ativo');
+        return $this->belongsTo(Ativos::class, 'ativo_id');
     }
 }

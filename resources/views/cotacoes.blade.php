@@ -15,7 +15,7 @@
                 <tr>
                     <th class="text">Nome da Cotação</th>
                     <th class="text">Status da Avaliação SD </th>
-                    <th><a href="#" class="btn-floating waves-effect waves-light green"><i class="material-icons">add</i></a></th>
+                    <th><a href="#" class="btn-floating waves-effect waves-light blue "><i class="material-icons">add</i></a></th>
                 </tr>
 
             </thead>

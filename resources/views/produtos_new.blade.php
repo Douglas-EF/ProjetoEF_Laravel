@@ -24,12 +24,13 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="input-field col s10">
-                    <input type="text" name="categoria" id="ctg" required>
-                    <label class="active" for="ctg">Categoria</label>
-                </div>
-            </div>
+            <label>Categoria</label><br>
+            <select name="categoria" class="browser-default col s4" required>
+                <option disabled selected>Escolha um opção</option>
+                <option value="Produto básico">Produto básico</option>
+                <option value="Produto não corriqueiro">Produto não corriqueiro</option>
+            </select>
+
             <div class="row">
                 <div class="input-field col s10">
                     <input id="obs" type="text" name="observacao">
@@ -42,4 +43,7 @@
         </form>
     </div>
 </div>
+<script>
+
+</script>
 @endsection

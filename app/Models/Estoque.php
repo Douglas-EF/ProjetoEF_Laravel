@@ -12,6 +12,6 @@ class Estoque extends Model
 
     public function produtos()
     {
-        return $this->belongsTo(Produtos::class, 'fk_id_prod');
+        return $this->belongsTo(Produtos::class, 'produto_id');
     }
 }

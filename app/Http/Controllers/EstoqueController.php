@@ -14,4 +14,21 @@ class EstoqueController extends Controller
         $estoque = Estoque::all();
         return view('/estoque', compact('estoque'));
     }
+
+    public function search(Request $request)
+    {
+        $estoque = $this->filtroProdutos($request->input('filtro'));
+        return view('/estoque', compact('estoque'));
+    }
+
+    public function filtroProdutos($filtro)
+    {
+        $estoque = Estoque::where('nome', 'like', "%{$filtro}%")->get();
+        return $estoque;
+    }
+
+    public function update($id, Request $request)
+    {
+        dd($id);
+    }
 }

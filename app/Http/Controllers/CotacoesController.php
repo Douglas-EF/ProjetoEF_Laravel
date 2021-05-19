@@ -9,7 +9,7 @@ class CotacoesController extends Controller
 {
     public function index()
     {
-        $cotacoes = Cotacoes::where('fk_ativo', true)->where('fk_sd_aval_cota', 1)->get();
+        $cotacoes = Cotacoes::where('ativo_id', true)->where('sd_avaliacao_cotacao_id', 1)->get();
         return view('/cotacoes', compact('cotacoes'));
     }
 }

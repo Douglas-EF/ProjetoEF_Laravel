@@ -20,6 +20,6 @@ class Produtos extends Model
     public $timestamps = false;
 
     protected $attributes = [
-        'fk_ativo' => 1
+        'ativo_id' => 1
     ];
 }

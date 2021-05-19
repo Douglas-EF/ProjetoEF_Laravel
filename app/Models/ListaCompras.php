@@ -9,4 +9,9 @@ class ListaCompras extends Model
 {
     use HasFactory;
     protected $table = "listas_compras";
+
+
+    protected $attributes = [
+        'ativo_id' => 1
+    ];
 }

@@ -13,7 +13,7 @@ class Cotacoes extends Model
 
     public function StatusAvaliacaoSD()
     {
-       return $this->belongsTo(SDAvaliacoesCotacoes::class, 'fk_sd_aval_cota');
+       return $this->belongsTo(SDAvaliacoesCotacoes::class, 'sd_avaliacao_cotacao_id');
     }
 }
 #SELECT * FROM cotacao INNER JOIN avaliacao_sd_cota ON cotacao.fk_avaliacao_sd_cota = 2 WHERE avaliacao_sd_cota.id_aval_sd_cota = 2"
