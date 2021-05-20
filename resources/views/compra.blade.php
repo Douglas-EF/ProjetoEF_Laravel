@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'EF - Listas de compra')
+@section('title', 'Listas de compra')
 
 @section('css', '/css/style.css')
 

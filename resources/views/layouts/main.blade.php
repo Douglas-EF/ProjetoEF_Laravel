@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/page.css">
     <!--Import materialize.css-->
     <link rel="stylesheet" href="@yield('css')">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
@@ -35,14 +36,20 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 <script>
+    $(document).ready(function() {
+        $('.modal').modal();
+    });
     const elemsModal = document.querySelectorAll(".modal");
     const instancesModal = M.Modal.init(elemsModal);
 
-    document.addEventListener('DOMContentLoaded', function() {
+
+
+    /*document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems, options);
-    });
+    });*/
 </script>
 
 </html>

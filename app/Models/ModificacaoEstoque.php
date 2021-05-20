@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Produtos extends Model
+class ModificacaoEstoque extends Model
 {
     use HasFactory;
-    protected $table = 'produtos';
 
-    protected $guarded = [];
+    protected $table = 'modificacao_estoque';
 
     public $timestamps = false;
 
-    protected $attributes = [
-        'ativo_id' => 1
-    ];
+    protected $guarded = [];
 }

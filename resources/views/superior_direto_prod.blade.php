@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'EF - Superior Direto')
+@section('title', 'Superior Direto')
 
 @section('css', '/css/menu_sd.css')
 

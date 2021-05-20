@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Estoque;
-use App\Models\Produtos;
+use App\Models\ModificacaoEstoque;
+
+date_default_timezone_set("America/Manaus");
 
 class EstoqueController extends Controller
-#SELECT * FROM estoque INNER JOIN produtos ON produtos.id = estoque.fk_id_prod AND estoque.fk_ativo = 1
 {
+
     public function index()
     {
         $estoque = Estoque::all();
@@ -27,8 +29,32 @@ class EstoqueController extends Controller
         return $estoque;
     }
 
-    public function update($id, Request $request)
+    public function create()
     {
-        dd($id);
+    }
+
+    public function update(Request $request, Estoque $estoque)
+    {
+        $new_qtd = $request->input('new_quantidade');
+        $old_qtd = $estoque->quantidade;
+        $operaco = $request->input('operacao');
+
+        $operaco == 'subtracao' ? $result = $old_qtd - $new_qtd : $result = $old_qtd + $new_qtd;
+
+        $estoque->update(['quantidade' => $result]);
+
+        $mod_estoque = new ModificacaoEstoque();
+        $mod_estoque = $mod_estoque->create([
+            'nome_produto' => $estoque->nome,
+            'nome_usuario' => 'Douglas',
+            'data' => date('Y-m-d'),
+            'hora' => date('H:i:s'),
+            'quantidade_anterior' => $old_qtd,
+            'quantidade_modificada' => $result,
+            'estoque_id' => 1,
+            'usuario_id' => 1
+        ]);
+
+        return redirect('/estoque');
     }
 }
