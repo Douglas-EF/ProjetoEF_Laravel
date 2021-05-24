@@ -29,10 +29,6 @@ class EstoqueController extends Controller
         return $estoque;
     }
 
-    public function create()
-    {
-    }
-
     public function update(Request $request, Estoque $estoque)
     {
         $new_qtd = $request->input('new_quantidade');

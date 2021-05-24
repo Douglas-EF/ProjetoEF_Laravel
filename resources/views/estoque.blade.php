@@ -24,7 +24,7 @@
                     <th class="text">Nome do Produto</th>
                     <th class="text">Quantidade</th>
                     <th></th>
-                    <th class="text"><a href="{{route('modificacaoestoque.index')}}" class="btn-floating waves-effect waves-light blue-grey"><i title="Exibir histórico de modificações"><img src="/img/historico.png"></i></a></th>
+                    <th class="text"><a href="{{route('modificacao_estoque.index')}}" class="btn-floating waves-effect waves-light blue-grey"><i title="Exibir histórico de modificações"><img src="/img/historico.png"></i></a></th>
                 </tr>
             </thead>
             <tbody>
