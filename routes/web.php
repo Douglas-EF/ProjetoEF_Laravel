@@ -15,6 +15,11 @@ Route::get('/superior_direto', function () {
 // ROUTS MODIFICAÇÕES ESTOQUE
 Route::get('/modificacao_estoque', [Controllers\ModificacaoEstoqueController::class, 'index'])->name('modificacao_estoque.index');
 Route::any('/modificacao_estoque/search', [Controllers\ModificacaoEstoqueController::class, 'search'])->name('modificacao_estoque.searchname');
+Route::any('/modificacao_estoque/searchdate', [Controllers\ModificacaoEstoqueController::class, 'searchdate'])->name('modificacao_estoque.searchdate');
+Route::get('/modificacao_estoque/pdf', [Controllers\ModificacaoEstoqueController::class, 'gerarPDF'])->name('modificacao_estoque.gerarpdf');
+//Route::get('/modificacao_estoque/pdf', [Controllers\PdfController::class, 'gerarPDF'])->name('modificacao_estoque.gerarpdfnomeprod');
+//Route::get('/modificacao_estoque/pdf', [Controllers\PdfController::class, 'gerarPDF'])->name('modificacao_estoque.gerarpdfdata');
+
 // ROUTS COMPRRAS
 Route::get('/compra', [Controllers\ListaComprasController::class, 'index']);
 Route::get('/compra/create', [Controllers\ListaComprasController::class, 'create'])->name('compra.create');
