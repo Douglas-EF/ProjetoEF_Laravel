@@ -7,38 +7,41 @@
 @section('content')
 <a href="{{ route('estoque.index') }}" class="btn waves-effect blue-grey"><i class="material-icons" title="Voltar"><img src="/img/voltar.png"></i></a>
 
-<form action="{{ route('modificacao_estoque.gerarpdf') }}" target="_blank">
+<form action="{{ route('modificacao_estoque.gerarpdf') }}" target="_blank" method="get">
     <button class="btn waves-effect orange"><i class="material-icons" title="Gerar PDF">picture_as_pdf</i></button>
-    <input id="opc_relatorio" name="opc_relatorio" value="{{ old('opc_relatorio') }}" type="hidden">
 </form>
 
 <div class="row">
     <div class="col s12 m6 push-m3">
         <h3 id="title" class="light text">Modificações no estoque</h3>
 
+        <button id="show_hide_one" class="btn waves-effect black-text cyan">PESQUISAR POR NOME</button>
+        <button id="show_hide_two" class="btn waves-effect black-text cyan">PESQUISAR POR PERÍODO</button>
+        <button id="show_hide_three" class="btn waves-effect black-text cyan">PESQUISA AVANÇADA</button>
+
         <!--| FORMLULÁRIO PARA PESQUISAR PRODUTO POR NOME |-->
-        <button id="show_hide_one" class="btn black-text cyan">PESQUISAR POR NOME</button>
         <div id="form_one" class="row">
             <form action="{{route('modificacao_estoque.searchname')}}" method="GET">
                 <div class="input-field col s8">
-                    <input type="text" name="filtro_name_prod" value="{{ old('filtro_name_prod') }}" placeholder="Informe o nome do produto...">
-                    <button id="btn_submit_one" class="btn" type="submit"><i class="material-icons">search</i></button>
+                    <input type="text" name="filtro_name_prod" value="{{old('filtro_name_prod')}}" placeholder="Informe o nome do produto...">
                 </div>
+                <input type="hidden" id="opc_rel_estoque" name="opc_rel_estoque" value="relatorio_nome_produto">
+                <button id="btn_submit_one" class="btn-floating" type="submit"><i class="material-icons">search</i></button>
+
             </form>
         </div>
 
         <!--| FORMLULÁRIO PARA PESQUISAR PRODUTO POR PERÍODO |-->
-        <button id="show_hide_two" class="btn black-text cyan">PESQUISAR POR PERÍODO</button>
         <div id="form_two" class="row">
-            <form action="{{ route('modificacao_estoque.searchdate') }}" method="POST">
-                @csrf
+            <form action="{{ route('modificacao_estoque.searchdate') }}" method="GET">
                 <div class="input-field col s4">
-                    <input type="date" value="2021-01-10" name="data_inicial">
-                    <button id="btn_submit_two" class="btn" type="submit"><i class="material-icons">search</i></button>
+                    <input type="date" value="{{old('data_inicial')}}" name="data_inicial">
                 </div>
                 <div class="input-field col s4">
-                    <input type="date" value="2021-05-20" name="data_final">
+                    <input type="date" value="{{old('data_final')}}" name="data_final">
                 </div>
+                <input type="hidden" id="opc_rel_estoque" name="opc_rel_estoque" value="relatorio_periodo_date">
+                <button id="btn_submit_two" class="btn-floating" type="submit"><i class="material-icons">search</i></button>
             </form>
         </div>
 
@@ -74,6 +77,7 @@
     var btn_submit_one = document.querySelectorAll("#btn_submit_one");
     var btn_submit_two = document.querySelectorAll("#btn_submit_two");
 
+    /*
     $("#btn_submit_one").click(function(event) {
         //event.preventDefault();
         $("#opc_relatorio").val('relatorio_nome_produto');
@@ -82,7 +86,7 @@
     $("#btn_submit_two").click(function(event) {
         //event.preventDefault();
         $("#opc_relatorio").val('relatorio_periodo_date');
-    });
+    });*/
 
     var btn_one = document.querySelector('#show_hide_one');
     var container_one = document.querySelector('#form_one');
@@ -94,6 +98,9 @@
 
 
     btn_one.addEventListener('click', function() {
+        if (container_two.style.display == 'block') {
+            container_two.style.display = 'none';
+        }
         if (container_one.style.display === 'block') {
             container_one.style.display = 'none';
         } else {
@@ -101,7 +108,12 @@
         }
 
     });
+
     btn_two.addEventListener('click', function() {
+        if (container_one.style.display == 'block') {
+            container_one.style.display = 'none';
+        }
+
         if (container_two.style.display === 'block') {
             container_two.style.display = 'none';
         } else {
@@ -109,5 +121,9 @@
         }
 
     });
+
+    if (isset(btn_one.addEventListener('click'))) {
+        container_two.style.display = 'none';
+    }
 </script>
 @endsection
