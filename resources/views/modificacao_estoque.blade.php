@@ -13,7 +13,8 @@
 
 <div class="row">
     <div class="col s12 m6 push-m3">
-        <h3 id="title" class="light text">Modificações no estoque</h3>
+        <h3 id="title" class="light text">Modificações&nbsp;no&nbsp;estoque&nbsp;<a href="{{route('modificacao_estoque.index')}}"><img src="/img/recarregar.png" title="Recarregar página"></a></h3>
+
 
         <button id="show_hide_one" class="btn waves-effect black-text cyan">PESQUISAR POR NOME</button>
         <button id="show_hide_two" class="btn waves-effect black-text cyan">PESQUISAR POR PERÍODO</button>
@@ -42,6 +43,23 @@
                 </div>
                 <input type="hidden" id="opc_rel_estoque" name="opc_rel_estoque" value="relatorio_periodo_date">
                 <button id="btn_submit_two" class="btn-floating" type="submit"><i class="material-icons">search</i></button>
+            </form>
+        </div>
+
+        <!--| FORMULÁRIO PARA PESQUISAR MODIFICACÕES POR PRODUTO E PERÍODO |-->
+        <div id="form_three" class="row">
+            <form action="{{ route('modificacao_estoque.searchavanced') }}" method="GET">
+                <div class="input-field col s4">
+                    <input type="text" value="{{ old('nome_prod_avanced') }}" name="nome_prod_avanced" placeholder="Nome do produto...">
+                </div>
+                <div class="input-field col s4">
+                    <input type="date" value="{{old('data_inicial_avanced')}}" name="data_inicial_avanced">
+                </div>
+                <div class="input-field col s4">
+                    <input type="date" value="{{old('data_final_avanced')}}" name="data_final_avanced">
+                </div>
+                <input type="hidden" id="opc_rel_estoque" name="opc_rel_estoque" value="relatorio_periodo_avanced">
+                <button id="btn_submit_three" class="btn-floating" type="submit"><i class="material-icons">search</i></button>
             </form>
         </div>
 
@@ -74,52 +92,61 @@
 </div>
 
 <script>
-    var btn_submit_one = document.querySelectorAll("#btn_submit_one");
-    var btn_submit_two = document.querySelectorAll("#btn_submit_two");
-
     /*
     $("#btn_submit_one").click(function(event) {
         //event.preventDefault();
         $("#opc_relatorio").val('relatorio_nome_produto');
     });
-
     $("#btn_submit_two").click(function(event) {
         //event.preventDefault();
         $("#opc_relatorio").val('relatorio_periodo_date');
     });*/
 
     var btn_one = document.querySelector('#show_hide_one');
-    var container_one = document.querySelector('#form_one');
     var btn_two = document.querySelector('#show_hide_two');
+    var btn_three = document.querySelector('#show_hide_three');
+
+    var container_one = document.querySelector('#form_one');
     var container_two = document.querySelector('#form_two');
+    var container_three = document.querySelector('#form_three');
+
     container_one.style.display = 'none';
     container_two.style.display = 'none';
+    container_three.style.display = 'none';
 
 
 
     btn_one.addEventListener('click', function() {
-        if (container_two.style.display == 'block') {
+        if (container_two.style.display == 'block' || container_three.style.display == 'block') {
             container_two.style.display = 'none';
-        }
-        if (container_one.style.display === 'block') {
+            container_three.style.display = 'none';
+        } else if (container_one.style.display === 'block') {
             container_one.style.display = 'none';
         } else {
             container_one.style.display = 'block';
         }
-
     });
 
     btn_two.addEventListener('click', function() {
-        if (container_one.style.display == 'block') {
+        if (container_one.style.display == 'block' || container_three.style.display == 'block') {
             container_one.style.display = 'none';
-        }
-
-        if (container_two.style.display === 'block') {
+            container_three.style.display = 'none';
+        } else if (container_two.style.display === 'block') {
             container_two.style.display = 'none';
         } else {
             container_two.style.display = 'block';
         }
+    });
 
+    btn_three.addEventListener('click', function() {
+        if (container_one.style.display == 'block' || container_two.style.display == 'block') {
+            container_one.style.display = 'none';
+            container_two.style.display = 'none';
+        } else if (container_three.style.display === 'block') {
+            container_three.style.display = 'none';
+        } else {
+            container_three.style.display = 'block';
+        }
     });
 
     if (isset(btn_one.addEventListener('click'))) {
