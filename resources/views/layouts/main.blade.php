@@ -13,6 +13,7 @@
     <!--Import materialize.css-->
     <link rel="stylesheet" href="@yield('css')">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </head>
 
@@ -27,6 +28,13 @@
     </div>
 
 
+    @if(session('msg'))    
+        <script>
+            M.toast({html: "{{session('msg')}}", classes:'rounded'})
+        </script>
+    @endif
+      
+
     @yield('content')
 
     <footer>
@@ -35,7 +43,6 @@
 
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -44,12 +51,14 @@
     const elemsModal = document.querySelectorAll(".modal");
     const instancesModal = M.Modal.init(elemsModal);
 
+    setTimeout(function() {
+        $('#mensagem').fadeOut('slow');
+    }, 4000);
 
+    $(document).ready(function() {
+        $('.tooltipped').tooltip();
+    });
 
-    /*document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems, options);
-    });*/
 </script>
 
 </html>

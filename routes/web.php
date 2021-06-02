@@ -40,12 +40,13 @@ Route::get('/estoque/historico', [Controllers\EstoqueController::class, 'create'
 Route::any('estoque/search', [Controllers\EstoqueController::class, 'search'])->name('estoque.search');
 Route::patch('estoque/{estoque}', [Controllers\EstoqueController::class, 'update'])->name('estoque.update');
 
-
 // ROUTS PRODUTOS
 Route::get('/produtos', [Controllers\ProdutosController::class, 'index'])->name('produtos.index');
 Route::get('/produtos/create', [Controllers\ProdutosController::class, 'create'])->name('produtos.create');
-Route::post('/produtos/', [Controllers\ProdutosController::class, 'store'])->name('produtos.store');
-
+Route::post('/produtos/pesquisa', [Controllers\ProdutosController::class, 'store'])->name('produtos.store');
+Route::get('produtos/edit/{id}', [Controllers\ProdutosController::class, 'edit'])->name('produtos.edit');
+Route::post('produtos/edit/{id}', [Controllers\ProdutosController::class, 'update'])->name('produtos.atualizar');
+Route::post('produtos/',[Controllers\ProdutosController::class, 'destroy'])->name('produtos.destroy');
 
 // ROUTS USUARIOS
 Route::get('/usuarios', [Controllers\UsuariosController::class, 'index'])->name('usuarios.index');

@@ -21,6 +21,14 @@ body .imagem{
     background-color: #282a2b;
 }
 
+nav{
+    background-color: #2196f3      ;
+}
+
+.pagination li.active{
+    background-color: #2196f3;
+}
+
 #title{
     margin: 10% 0 4% 0;
 }

@@ -19,13 +19,14 @@ class EstoqueController extends Controller
 
     public function search(Request $request)
     {
+        $filters = $request->all();
         $estoque = $this->filtroProdutos($request->input('filtro'));
-        return view('/estoque', compact('estoque'));
+        return view('/estoque', compact('estoque', 'filters'));
     }
 
     public function filtroProdutos($filtro)
     {
-        $estoque = Estoque::where('nome', 'like', "%{$filtro}%")->get();
+        $estoque = Estoque::where('nome', 'like', "%{$filtro}%")->paginate();
         return $estoque;
     }
 

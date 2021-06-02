@@ -1,9 +1,10 @@
+
 <?php
+
 
 namespace App\Http\Controllers;
 
 use App\Models\ListaControles;
-use Illuminate\Http\Request;
 
 class ListaControlesController extends Controller
 {

@@ -87,7 +87,13 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table>        
+            @if(isset($filters))
+            {{$mod_estoque->appends($filters)->links("pagination::bootstrap-4")}}
+            @else
+            {{$mod_estoque->links("pagination::bootstrap-4")}}
+            @endif       
+
     </div>
 </div>
 

@@ -24,7 +24,7 @@
                     <th class="text">Nome do Produto</th>
                     <th class="text">Quantidade</th>
                     <th></th>
-                    <th class="text"><a href="{{route('modificacao_estoque.index')}}" class="btn-floating waves-effect waves-light blue-grey"><i title="Exibir histórico de modificações"><img src="/img/historico.png"></i></a></th>
+                    <th class="text"><a href="{{route('modificacao_estoque.index')}}" class="btn-floating tooltipped waves-effect waves-light blue-grey" data-position="top" data-tooltip="Exibir histórico de modificações"><i><img src="/img/historico.png"></i></a></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,11 +34,16 @@
                     <td>{{ $dados->produtos->nome }}</td>
                     <td>{{ $dados->quantidade }}</td>
                     <td><a class="btn-floating waves-effect waves-light green modal-trigger" id="aumenta-estoque" href="#modal1"><i title="Aumentar estoque"><img src="/img/up_estoque.png"></i></a></td>
-                    <td><a class="btn-floating waves-effect waves-light red modal-trigger" id="diminui-estoque" data-target="modal2"><i title="Abaixar estoque"><img src="/img/down_estoque.png"></i></a></td>
+                    <td><a class="btn-floating waves-effect waves-light red modal-trigger" id="diminui-estoque" data-target="modal2"><i title="Diminuir estoque"><img src="/img/down_estoque.png"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        @if(isset($filters))
+        {{$estoque->appends($filters)->links("pagination::bootstrap-4")}}
+        @else
+        {{$estoque->link("pagination::bootstrap-4")}}
+        @endif
     </div>
 </div>
 <!-- MODAL UP ESTOQUE -->
@@ -52,7 +57,7 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix"><img src="/img/qtd_estoque.png"></i>
-                    <input name="new_quantidade" type="text" class="validate" required>
+                    <input name="new_quantidade" type="text" class="validate" pattern="[0-9]+$" required>
                     <label for="btn1">Quantidade</label>
                     <input hidden name="operacao" value="soma">
                 </div>
@@ -76,7 +81,7 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix"><img src="/img/qtd_estoque.png"></i>
-                    <input name="new_quantidade" type="text" class="validate" required>
+                    <input name="new_quantidade" type="text" class="validate" pattern="[0-9]+$" required>
                     <label for="btn2">Quantidade</label>
                     <input hidden name="operacao" value="subtracao">
                 </div>
@@ -96,6 +101,13 @@
 
     $(document).ready(function() {
         $('.modal').modal();
+    });
+
+    $("#modal1").bind('ajax:complete', function(event) {
+        M.toast({
+            html: 'I am a toast!',
+            classes: 'rounded'
+        });
     });
 </script>
 @endsection
