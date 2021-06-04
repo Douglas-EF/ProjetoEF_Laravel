@@ -13,14 +13,12 @@ Route::get('/superior_direto', function () {
 });
 
 // ROUTS MODIFICAÇÕES ESTOQUE
-Route::get('/modificacao_estoque', [Controllers\ModificacaoEstoqueController::class, 'index'])->name('modificacao_estoque.index');
-Route::any('/modificacao_estoque/search', [Controllers\ModificacaoEstoqueController::class, 'search'])->name('modificacao_estoque.searchname');
-Route::any('/modificacao_estoque/searchdate', [Controllers\ModificacaoEstoqueController::class, 'searchdate'])->name('modificacao_estoque.searchdate');
-Route::any('/modificacao_estoque/searchavanced', [Controllers\ModificacaoEstoqueController::class, 'searchavanced'])->name('modificacao_estoque.searchavanced');
+Route::get('/modificacao_estoque/search', [Controllers\ModificacaoEstoqueController::class, 'search'])->name('modificacao_estoque.search');
 Route::get('/modificacao_estoque/pdf', [Controllers\ModificacaoEstoqueController::class, 'gerarPDF'])->name('modificacao_estoque.gerarpdf');
+Route::get('/modificacao_estoque/index', [Controllers\ModificacaoEstoqueController::class, 'index'])->name('modificacao_estoque.index');
 
 // ROUTS COMPRRAS
-Route::get('/compra', [Controllers\ListaComprasController::class, 'index']);
+Route::get('/compra', [Controllers\ListaComprasController::class, 'index'])->name('compra.index');
 Route::get('/compra/create', [Controllers\ListaComprasController::class, 'create'])->name('compra.create');
 Route::get('/compra/edit', [Controllers\ListaComprasController::class, 'edit'])->name('compra.edit');
 Route::get('/compra/delete', [Controllers\ListaComprasController::class, 'delete'])->name('compra.delete');
@@ -46,8 +44,7 @@ Route::get('/produtos/create', [Controllers\ProdutosController::class, 'create']
 Route::post('/produtos/pesquisa', [Controllers\ProdutosController::class, 'store'])->name('produtos.store');
 Route::get('produtos/edit/{id}', [Controllers\ProdutosController::class, 'edit'])->name('produtos.edit');
 Route::post('produtos/edit/{id}', [Controllers\ProdutosController::class, 'update'])->name('produtos.atualizar');
-Route::post('produtos/',[Controllers\ProdutosController::class, 'destroy'])->name('produtos.destroy');
-
+Route::post('/produtos/destroy/{id}', [Controllers\ProdutosController::class, 'delete']);
 // ROUTS USUARIOS
 Route::get('/usuarios', [Controllers\UsuariosController::class, 'index'])->name('usuarios.index');
 

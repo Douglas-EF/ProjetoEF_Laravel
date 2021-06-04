@@ -46,9 +46,17 @@ class ProdutosController extends Controller
         return redirect('/produtos')->with('msg', 'Produto atualizado com sucesso!');
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $produto = Produtos::findOrFail($request->input('id'));
+        $produto = Produtos::findOrFail($id);
+        $produto->update(['ativo_id' => false]);
+
+        return redirect('/produtos')->with('msg', 'Produto deletado com sucesso!');
+    }
+
+    public function delete($id)
+    {
+        $produto = Produtos::findOrFail($id);
         $produto->update(['ativo_id' => false]);
 
         return redirect('/produtos')->with('msg', 'Produto deletado com sucesso!');

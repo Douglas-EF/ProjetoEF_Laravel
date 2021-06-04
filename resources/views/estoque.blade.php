@@ -11,7 +11,7 @@
 
         <form action="{{ route('estoque.search') }}" method="POST">
             @csrf
-            <div class="input-field col s6">
+            <div class="input-field col s8">
                 <i class="material-icons prefix">search</i>
                 <input type="text" name="filtro" placeholder="Informe o nome do produto...">
             </div>
@@ -39,11 +39,11 @@
                 @endforeach
             </tbody>
         </table>
-        @if(isset($filters))
-        {{$estoque->appends($filters)->links("pagination::bootstrap-4")}}
-        @else
-        {{$estoque->link("pagination::bootstrap-4")}}
-        @endif
+        <!-- if(isset($filters))
+        $estoque->appends($filters)->links("pagination::bootstrap-4")
+        else
+        $estoque->links()
+        endif -->
     </div>
 </div>
 <!-- MODAL UP ESTOQUE -->
@@ -94,6 +94,8 @@
     </div>
 </div>
 
+
+
 <script>
     $("tr").click(function() {
         $('.modal form').attr('action', '/estoque/' + $(this).data('id'));
@@ -101,13 +103,6 @@
 
     $(document).ready(function() {
         $('.modal').modal();
-    });
-
-    $("#modal1").bind('ajax:complete', function(event) {
-        M.toast({
-            html: 'I am a toast!',
-            classes: 'rounded'
-        });
     });
 </script>
 @endsection

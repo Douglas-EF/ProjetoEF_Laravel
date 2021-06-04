@@ -40,10 +40,13 @@
                 </div>
             </div>
             <button class="btn waves-effect waves-light green" type="submit"><i class="material-icons left"><img src="/img/envio.png"></i>CADASTRAR</button>
-            <a class="btn waves-effect waves-light red"><i class="material-icons left"><img src="/img/cancelar.png"></i>CANCELAR</a>
+            <button type="reset" class="btn waves-effect waves-light red"><i class="material-icons left"><img src="/img/cancelar.png"></i>CANCELAR</button>
             <a class="btn waves-effect waves-light" href="/produtos"><i class="material-icons left"><img src="/img/voltar.png"></i>VOLTAR</a>
         </form>
     </div>
 </div>
+<script>
+
+</script>
 
 @endsection

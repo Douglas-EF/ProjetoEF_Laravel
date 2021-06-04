@@ -17,18 +17,18 @@
             </div>
 
             <div class="input-field col s12">
-                <input type="text" name="data_inicial" id="data_inicial" required>
+                <input type="date" name="data_inicial" id="data_inicial" required>
                 <label for="data_inicial">Data Inicial</label>
             </div>
 
             <div class="input-field col s12">
-                <input type="text" name="data_final" id="data_final" required>
+                <input type="date" name="data_final" id="data_final" required>
                 <label for="data_final">Data Final</label>
             </div>
 
             <button class="btn green" type="submit" name="btn_cadastrar">CADASTRAR</button>
-            <a class="btn red">CANCELAR</a>
-            <a href="compra.php" class="btn">VOLTAR</a>
+            <button class="btn red" type="reset">CANCELAR</button>
+            <a class="btn" href="{{ route('compra.index') }}">VOLTAR</a>
 
         </form>
     </div>

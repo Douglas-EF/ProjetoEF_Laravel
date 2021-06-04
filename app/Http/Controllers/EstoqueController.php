@@ -19,17 +19,11 @@ class EstoqueController extends Controller
 
     public function search(Request $request)
     {
-        $filters = $request->all();
-        $estoque = $this->filtroProdutos($request->input('filtro'));
+        $filters = $request->all();        
+        $estoque = Estoque::where('nome', 'LIKE', "%{$request->input('filtro')}%")->paginate();
         return view('/estoque', compact('estoque', 'filters'));
     }
-
-    public function filtroProdutos($filtro)
-    {
-        $estoque = Estoque::where('nome', 'like', "%{$filtro}%")->paginate();
-        return $estoque;
-    }
-
+ 
     public function update(Request $request, Estoque $estoque)
     {
         $new_qtd = $request->input('new_quantidade');

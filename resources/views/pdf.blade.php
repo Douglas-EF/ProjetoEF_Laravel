@@ -25,6 +25,7 @@
         </thead>
 
         <tbody>
+            
             @foreach($mod_estoque as $dados)
             <tr>
                 <td>{{$dados->nome_produto}}</td>
