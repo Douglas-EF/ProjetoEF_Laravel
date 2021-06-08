@@ -13,7 +13,7 @@ class ModificacaoEstoqueController extends Controller
     public function index()
     {
         $mod_estoque = ModificacaoEstoque::orderBy('id', 'desc')->paginate();
-        return view('/modificacao_estoque', compact('mod_estoque'));
+        return view('modificacao_estoque.index', compact('mod_estoque'));
     }
 
     // BUSCAR POR NOME E PERÍODO
@@ -22,8 +22,9 @@ class ModificacaoEstoqueController extends Controller
         $filters = $request->all();
         $request->flash();
         $mod_estoque = $this->filterModEstoque($request, true);
+        $pesquisa = true;
 
-        return view('/modificacao_estoque', compact('mod_estoque', 'filters'));
+        return view('modificacao_estoque.index', compact('mod_estoque', 'filters', 'pesquisa'));
     }
 
     protected function filterModEstoque(Request $request, bool $paginate)

@@ -13,17 +13,17 @@ class EstoqueController extends Controller
 
     public function index()
     {
-        $estoque = Estoque::all();
-        return view('/estoque', compact('estoque'));
+        $estoque = Estoque::where('ativo_id', true)->orderBy('id', 'DESC')->paginate();
+        return view('estoque.index', compact('estoque'));
     }
 
     public function search(Request $request)
     {
-        $filters = $request->all();        
-        $estoque = Estoque::where('nome', 'LIKE', "%{$request->input('filtro')}%")->paginate();
-        return view('/estoque', compact('estoque', 'filters'));
+        $filters = $request->all();
+        $estoque = Estoque::where('nome', 'LIKE', "%{$request->input('filtro')}%")->where('ativo_id', true)->orderBy('id', 'DESC')->paginate();
+        return view('estoque.index', compact('estoque', 'filters'));
     }
- 
+
     public function update(Request $request, Estoque $estoque)
     {
         $new_qtd = $request->input('new_quantidade');

@@ -8,10 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class ListaControles extends Model
 {
     use HasFactory;
+
     protected $table = 'listas_controles';
 
-    public function Ativo()
-    {
-        return $this->belongsTo(Ativos::class, 'ativo_id');
-    }
+    protected $guarded = [];
+
+    public $timestamps = false;
+
+    protected $dates = ['data_inicial', 'data_final'];
+
+    protected $attributes = [
+        'ativo_id' => 1
+    ];
+    
 }

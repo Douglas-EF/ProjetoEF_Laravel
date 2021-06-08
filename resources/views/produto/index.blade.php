@@ -8,6 +8,15 @@
 <div class="row">
     <div class="col s12 m6 push-m3">
         <h3 id="title" class="light text">Produtos</h3>
+
+        <form action="{{ route('produtos.search') }}" method="POST">
+            @csrf
+            <div class="input-field col s8">
+                <i class="material-icons prefix">search</i>
+                <input type="text" name="filtro" placeholder="Informe o nome do produto...">
+            </div>
+        </form>
+
         <table class="striped">
             <thead>
                 <tr>
@@ -21,6 +30,17 @@
             </thead>
 
             <tbody>
+                @if($produtos->isEmpty())
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                @else
                 @foreach($produtos as $dados)
                 <tr data-id="{{ $dados->id }}">
                     <td>{{$dados->nome}}</td>
@@ -29,12 +49,17 @@
                     <td>{{$dados->observacao}}</td>
                     <td><a href="{{ route('produtos.edit', ['id' => $dados->id]) }}" class="btn-floating waves-effect waves-light green"><i class="material-icons">edit</i></a></td>
                     <td><a class="btn-floating waves-effect waves-light red modal-trigger" id="diminui-estoque" data-target="modal"><i class="material-icons">delete</i></a></td>
-
                 </tr>
                 @endforeach
+
+                @endif
             </tbody>
         </table>
-        {{$produtos->links("pagination::bootstrap-4")}}
+        @if(isset($filters))
+        {{$produtos->appends($filters)->links("pagination::bootstrap-4")}}
+        @else
+        {{$produtos->links()}}
+        @endif
     </div>
 </div>
 
@@ -56,8 +81,6 @@
         width: 40% !important;
         height: 32% !important;
     }
-
-    
 </style>
 
 <script>

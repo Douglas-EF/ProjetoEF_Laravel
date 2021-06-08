@@ -10,6 +10,11 @@ class ListaCompras extends Model
     use HasFactory;
     protected $table = "listas_compras";
 
+    protected $guarded = [];
+
+    public $timestamps = false;
+
+    protected $dates = ['data_inicial', 'data_final'];
 
     protected $attributes = [
         'ativo_id' => 1

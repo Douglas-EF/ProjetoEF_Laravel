@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col s12 m6 push-m3">
         <h3 id="title" class="light text">Editar Produto</h3>
-        <form id="form_edit" action="{{ route('produtos.atualizar', ['id' => $produto->id]) }}" method="POST">
+        <form id="form_edit" action="{{ route('produtos.update', ['id' => $produto->id]) }}" method="POST">
             @csrf
             <div class="row">
                 <div class="input-field col s10">
@@ -42,8 +42,7 @@
                 </div>
             </div>
             <button class="btn waves-effect waves-light green" type="submit" name="btn_cadastrar"><i class="material-icons left"><img src="/img/envio.png"></i>ATUALIZAR</button>
-            <a class="btn waves-effect waves-light red" href="{{ route('produtos.create') }}"><i class="material-icons left"><img src="/img/cancelar.png"></i>CANCELAR</a>
-            <a class="btn waves-effect waves-light" href="{{ route('produtos.index') }}"><i class="material-icons left"><img src="/img/voltar.png"></i>VOLTAR</a>
+            <a class="btn waves-effect waves-light red" href="{{ route('produtos.index') }}"><i class="material-icons left"><img src="/img/cancelar.png"></i>CANCELAR</a>
         </form>
     </div>
 </div>

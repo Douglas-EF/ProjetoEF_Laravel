@@ -11,26 +11,39 @@ class ProdutosController extends Controller
 {
     public function index()
     {
-        $produtos = Produtos::where('ativo_id', true)->paginate(5);
-        return view('/produtos', compact('produtos'));
+        $produtos = Produtos::where('ativo_id', true)->orderBy('id', 'DESC')->paginate();
+        return view('produto.index', compact('produtos'));
     }
 
+
+    # PESQUISA
+    public function search(Request $request)
+    {
+        $filters = $request->all();
+        $produtos = Produtos::where('nome', 'LIKE', "%{$request->input('filtro')}%")->where('ativo_id', true)->orderBy('id', 'DESC')->paginate();
+        return view('produto.index', compact('produtos', 'filters'));
+    }
+
+
+    # CREATE
     public function create()
     {
-        return view('/produtos_new');
+        return view('produto.new');
     }
 
     public function store(Request $request)
     {
         $produtos = new Produtos();
         $produtos = $produtos->create($request->all());
-        return redirect('/produtos')->with('msg', 'Produto cadastrado com sucesso!');
+        return redirect('/produtos')->with('msg', ['Produto cadastrado com sucesso!']);
     }
 
+
+    # UPDATE
     public function edit($id)
     {
         $produto = Produtos::findOrFail($id);
-        return view('produto_edit', compact('produto'));
+        return view('produto.edit', compact('produto'));
     }
 
     public function update(Request $request, $id)
@@ -43,22 +56,15 @@ class ProdutosController extends Controller
             'observacao' => $request->observacao
         ]);
 
-        return redirect('/produtos')->with('msg', 'Produto atualizado com sucesso!');
+        return redirect('/produtos')->with('msg', ['Produto atualizado com sucesso!']);
     }
 
+    # "DELETE" 
     public function destroy($id)
     {
         $produto = Produtos::findOrFail($id);
         $produto->update(['ativo_id' => false]);
 
-        return redirect('/produtos')->with('msg', 'Produto deletado com sucesso!');
-    }
-
-    public function delete($id)
-    {
-        $produto = Produtos::findOrFail($id);
-        $produto->update(['ativo_id' => false]);
-
-        return redirect('/produtos')->with('msg', 'Produto deletado com sucesso!');
+        return redirect('/produtos')->with('msg', ['Produto deletado com sucesso!', 'Produto removido do estoque!']);
     }
 }

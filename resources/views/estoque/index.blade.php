@@ -19,8 +19,7 @@
 
         <table class="striped">
             <thead>
-                <tr>
-                    <th>#</th>
+                <tr>                    
                     <th class="text">Nome do Produto</th>
                     <th class="text">Quantidade</th>
                     <th></th>
@@ -30,7 +29,6 @@
             <tbody>
                 @foreach($estoque as $dados)
                 <tr data-id="{{ $dados->id }}">
-                    <td>{{ $dados->id }}</td>
                     <td>{{ $dados->produtos->nome }}</td>
                     <td>{{ $dados->quantidade }}</td>
                     <td><a class="btn-floating waves-effect waves-light green modal-trigger" id="aumenta-estoque" href="#modal1"><i title="Aumentar estoque"><img src="/img/up_estoque.png"></i></a></td>
@@ -39,11 +37,11 @@
                 @endforeach
             </tbody>
         </table>
-        <!-- if(isset($filters))
-        $estoque->appends($filters)->links("pagination::bootstrap-4")
-        else
-        $estoque->links()
-        endif -->
+        @if(isset($filters))
+        {{$estoque->appends($filters)->links("pagination::bootstrap-4")}}
+        @else
+        {{$estoque->links()}}
+        @endif
     </div>
 </div>
 <!-- MODAL UP ESTOQUE -->

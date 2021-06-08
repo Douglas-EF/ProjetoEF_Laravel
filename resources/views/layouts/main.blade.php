@@ -28,12 +28,17 @@
     </div>
 
 
-    @if(session('msg'))    
-        <script>
-            M.toast({html: "{{session('msg')}}", classes:'rounded'})
-        </script>
+    @if(session('msg'))
+    @foreach(session('msg') as $msg)
+    <script>
+        M.toast({
+            html: "{{$msg}}",
+            classes: 'rounded'
+        })
+    </script>
+    @endforeach
     @endif
-      
+
 
     @yield('content')
 
@@ -58,7 +63,6 @@
     $(document).ready(function() {
         $('.tooltipped').tooltip();
     });
-
 </script>
 
 </html>
