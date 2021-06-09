@@ -26,7 +26,7 @@
                     <td>{{$dados->nome}}</td>
                     <td>{{$dados->data_inicial->format('d/m/Y') }}</td>
                     <td>{{$dados->data_final->format('d/m/Y')}}</td>
-                    <td><a href="" class="btn-floating waves-effect waves-light blue-grey"><i title="Abrir lista de controle"><img src="/img/open_list.png"></i></a></td>
+                    <td><a href="{{ route('controles.show', ['id' => $dados->id]) }}" class="btn-floating waves-effect waves-light blue-grey"><i title="Abrir lista de controle"><img src="/img/open_list.png"></i></a></td>
                     <td><a href="{{ route('controles.edit', ['id' => $dados->id]) }}" class="btn-floating waves-effect waves-light green"><i class="material-icons">edit</i></a></td>
                     <td><a class="btn-floating red modal-trigger waves-effect waves-light" data-target="modal"><i class="material-icons">delete</i></a></td>
                 </tr>

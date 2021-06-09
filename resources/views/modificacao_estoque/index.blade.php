@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="col s12 m6 push-m3">
-        <h3 id="title" class="light text">Modificações&nbsp;no&nbsp;estoque&nbsp;<a id="recarregar" href="{{route('modificacao_estoque.index')}}"><img src="/img/recarregar.png" title="Recarregar página"></a></h3>
+        <h3 id="title" class="light text">Modificações&nbsp;no&nbsp;estoque&nbsp;<a id="recarregar" href="{{route('modificacao_estoque.index')}}"><img src="/img/recarregar.png" title="Limpar filtro(s)"></a></h3>
 
         <!--| FORMULÁRIO PARA PESQUISAR MODIFICACÕES POR PRODUTO E PERÍODO |-->
         <div id="form_three" class="row ">
@@ -50,6 +50,17 @@
             </thead>
 
             <tbody>
+                @if($mod_estoque->isEmpty())
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+
+                @else
                 @foreach($mod_estoque as $dados)
                 <tr>
                     <td>{{ $dados->nome_produto }}</td>
@@ -60,6 +71,7 @@
                     <td>{{$dados->quantidade_modificada}}</td>
                 </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
         @if(isset($filters))

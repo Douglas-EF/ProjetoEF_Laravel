@@ -55,4 +55,12 @@ class ListaComprasController extends Controller
 
         return redirect('/compras')->with('msg', ['Lista de compra deletada com sucesso!']);
     }
+
+
+    # SHOW
+    public function show($id)
+    {
+        $compra = ListaCompras::findOrFail($id);
+        return view('compra.itens', compact('compra'));
+    }
 }

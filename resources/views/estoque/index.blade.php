@@ -19,7 +19,7 @@
 
         <table class="striped">
             <thead>
-                <tr>                    
+                <tr>
                     <th class="text">Nome do Produto</th>
                     <th class="text">Quantidade</th>
                     <th></th>
@@ -27,6 +27,15 @@
                 </tr>
             </thead>
             <tbody>
+            @if($estoque->isEmpty())
+            <tr>
+                <td>-</td>
+                <td>-</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            @else
                 @foreach($estoque as $dados)
                 <tr data-id="{{ $dados->id }}">
                     <td>{{ $dados->produtos->nome }}</td>
@@ -35,12 +44,13 @@
                     <td><a class="btn-floating waves-effect waves-light red modal-trigger" id="diminui-estoque" data-target="modal2"><i title="Diminuir estoque"><img src="/img/down_estoque.png"></i></a></td>
                 </tr>
                 @endforeach
+            @endif
             </tbody>
         </table>
         @if(isset($filters))
         {{$estoque->appends($filters)->links("pagination::bootstrap-4")}}
         @else
-        {{$estoque->links()}}
+        {{$estoque->links("pagination::bootstrap-4")}}
         @endif
     </div>
 </div>

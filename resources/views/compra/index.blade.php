@@ -25,9 +25,9 @@
                     <td>{{ $dados->nome }}</td>
                     <td>{{ $dados->data_inicial->format('d/m/Y') }}</td>
                     <td>{{ $dados->data_final->format('d/m/Y') }}</td>
-                    <td><a href="" class="btn-floating waves-effect waves-light blue-grey"><i title="Abrir lista de compra"><img src="/img/open_list.png"></i></a></td>
+                    <td><a href="{{ route('compras.show', ['id' => $dados->id]) }}" class="btn-floating waves-effect waves-light blue-grey"><i title="Abrir lista de compra"><img src="/img/open_list.png"></i></a></td>
                     <td><a href="{{ route('compras.edit', ['id' => $dados->id]) }}" class="btn-floating waves-effect waves-light green"><i class="material-icons">edit</i></a></td>
-                    <td><a class="btn-floating red modal-trigger waves-effect waves-light" data-target="modal"><i class="material-icons">delete</i></a></td>
+                    <td><a  class="btn-floating red modal-trigger waves-effect waves-light" data-target="modal"><i class="material-icons">delete</i></a></td>
                 </tr>
                 @endforeach
             </tbody>
@@ -38,7 +38,7 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <h5>EXCLUIR LISTA DE COMPRA</h5>
-        <p>Tem certeza que deseja excluir esta lista de controle?</p><br>
+        <p>Tem certeza que deseja excluir esta lista de compra?</p><br>
         <form method="POST">
             @csrf
             <div class="modal-footer">
@@ -54,5 +54,4 @@
         $('.modal form').attr('action', '/compras/destroy/' + $(this).data('id'));
     });
 </script>
-
 @endsection

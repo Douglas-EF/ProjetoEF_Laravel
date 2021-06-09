@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col s12 m6 push-m3">
-        <h3 class="light">Editar Lista de Controle</h3>
+        <h3 id="title" class="light text">Editar Lista de Controle</h3>
         <form action="{{ route('controles.update', ['id' => $controle->id]) }}" method="POST">
             @csrf
             <div class="input-field col s12">

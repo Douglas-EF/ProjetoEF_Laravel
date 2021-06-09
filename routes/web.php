@@ -24,6 +24,19 @@ Route::post('/compras/store', [Controllers\ListaComprasController::class, 'store
 Route::get('/compras/edit/{id}', [Controllers\ListaComprasController::class, 'edit'])->name('compras.edit');
 Route::post('/compras/update/{id}', [Controllers\ListaComprasController::class, 'update'])->name('compras.update');
 Route::post('/compras/destroy/{id}', [Controllers\ListaComprasController::class, 'destroy'])->name('compras.destroy');
+Route::get('/compra/detalhes/{id}', [Controllers\ListaComprasController::class, 'show'])->name('compras.show');
+
+// ROUTS ITENS LISTA COMPRA
+Route::get('compras/item/create/{lista}', [Controllers\ItensListaCompraController::class, 'create'])->name('item_compra.create');
+Route::post('compras/item/store', [Controllers\ItensListaCompraController::class, 'store'])->name('item_compra.store');
+Route::get('compras/item/edit/{id}', [Controllers\ItensListaCompraController::class, 'edit'])->name('item_compra.edit');
+Route::post('compras/item/update/{id}', [Controllers\ItensListaCompraController::class, 'update'])->name('item_compra.update');
+
+// ROUTS ITENS LISTA CONTROLE
+Route::get('/controles/item/create/{lista}', [Controllers\ItensListaControlesController::class, 'create'])->name('item_controle.create');
+Route::post('/controles/item/store', [Controllers\ItensListaControlesController::class, 'store'])->name('item_controle.store');
+Route::get('/controles/item/edit/{id}', [Controllers\ItensListaControlesController::class, 'store'])->name('item_controle.edit');
+Route::post('/controles/item/update/{id}', [Controllers\ItensListaControlesController::class, 'store'])->name('item_controle.update');
 
 // ROUTS CONTROLES
 Route::get('/controles', [Controllers\ListaControlesController::class, 'index'])->name('controles.index');
@@ -32,6 +45,7 @@ Route::post('/controles/store', [Controllers\ListaControlesController::class, 's
 Route::get('controles/edit/{id}', [Controllers\ListaControlesController::class, 'edit'])->name('controles.edit');
 Route::post('controles/update/{id}', [Controllers\ListaControlesController::class, 'update'])->name('controles.update');
 Route::post('controles/destroy/{id}', [Controllers\ListaControlesController::class, 'destroy'])->name('controles.destroy');
+Route::get('/controles/detalhes/{id}', [Controllers\ListaControlesController::class, 'show'])->name('controles.show');
 
 // ROUTS COTAÇÕES
 Route::get('/cotacoes', [Controllers\CotacoesController::class, 'index'])->name('cotacoes.index');

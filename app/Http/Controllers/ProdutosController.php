@@ -35,7 +35,7 @@ class ProdutosController extends Controller
     {
         $produtos = new Produtos();
         $produtos = $produtos->create($request->all());
-        return redirect('/produtos')->with('msg', ['Produto cadastrado com sucesso!']);
+        return redirect('/produtos')->with('msg', ['Produto cadastrado com sucesso!', 'Produto inserido no estoque!']);
     }
 
 
@@ -56,7 +56,7 @@ class ProdutosController extends Controller
             'observacao' => $request->observacao
         ]);
 
-        return redirect('/produtos')->with('msg', ['Produto atualizado com sucesso!']);
+        return redirect('/produtos')->with('msg', ['Produto atualizado com sucesso!', 'Produto atualizado no estoque!']);
     }
 
     # "DELETE" 

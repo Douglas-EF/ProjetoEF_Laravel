@@ -32,6 +32,12 @@ class ListaControlesController extends Controller
         return view('controle.edit', compact('controle'));
     }
 
+    public function show($id)
+    {
+        $controle = ListaControles::findOrFail($id);
+        return view('controle.itens', compact('controle'));
+    }
+
     public function update(Request $request, $id)
     {
         $controle = ListaControles::findOrFail($id);

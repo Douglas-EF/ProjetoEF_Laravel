@@ -9,7 +9,7 @@ class ListaControles extends Model
 {
     use HasFactory;
 
-    protected $table = 'listas_controles';
+    protected $table = "listas_controles";
 
     protected $guarded = [];
 
@@ -20,5 +20,12 @@ class ListaControles extends Model
     protected $attributes = [
         'ativo_id' => 1
     ];
-    
+
+    public function itens_lista_controle()
+    {
+        return $this->hasMany(
+            ItensListaControle::class,
+            'lista_controle_id'
+        );
+    }
 }

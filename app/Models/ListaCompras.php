@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ListaCompras extends Model
 {
     use HasFactory;
+    
     protected $table = "listas_compras";
 
     protected $guarded = [];
@@ -17,6 +18,14 @@ class ListaCompras extends Model
     protected $dates = ['data_inicial', 'data_final'];
 
     protected $attributes = [
-        'ativo_id' => 1
+        'ativo_id' => true
     ];
+
+    public function itens_lista()
+    {
+        return $this->hasMany(
+            ItensListaCompra::class, 
+            'lista_compra_id'
+        );
+    }
 }

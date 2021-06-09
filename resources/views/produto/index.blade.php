@@ -58,7 +58,7 @@
         @if(isset($filters))
         {{$produtos->appends($filters)->links("pagination::bootstrap-4")}}
         @else
-        {{$produtos->links()}}
+        {{$produtos->links("pagination::bootstrap-4")}}
         @endif
     </div>
 </div>

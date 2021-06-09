@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col s12 m6 push-m3">
-        <h3 class="light">Editar Lista de Compra</h3>
+        <h3 id="title" class="light text">Editar Lista de Compra</h3>
         <form action="{{route('compras.update', ['id' => $compra->id])}}" method="POST">
             @csrf
             <div class="input-field col s12">
@@ -28,11 +28,8 @@
 
             <button class="btn green" type="submit">ATUALIZAR</button>
             <a href=" {{ route('compras.index') }} " class="btn red">CANCELAR</a>
-
         </form>
     </div>
-
 </div>
-
 </form>
 @endsection

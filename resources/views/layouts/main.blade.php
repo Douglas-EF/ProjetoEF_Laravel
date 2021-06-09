@@ -58,11 +58,15 @@
 
     setTimeout(function() {
         $('#mensagem').fadeOut('slow');
-    }, 4000);
+    }, 6000);
 
     $(document).ready(function() {
         $('.tooltipped').tooltip();
     });
+
+    $(document).ready(function(){
+    $('select').formSelect();
+  });
 </script>
 
 </html>
