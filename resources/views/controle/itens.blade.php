@@ -53,8 +53,7 @@
 </div>
 
 <script>
-    /*
-    $("tr").click(function() {
+    /*$("tr").click(function() {
         $('.modal form').attr('action', '/compras/destroy/' + $(this).data('id'));
     });*/
 </script>

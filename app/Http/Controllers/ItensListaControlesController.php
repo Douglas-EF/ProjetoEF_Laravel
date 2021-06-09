@@ -18,16 +18,16 @@ class ItensListaControlesController extends Controller
     {
         $item = new ItensListaControle;
 
-        $item->create([
+        /*$item->create([
             'razao_social' => $request->razao_social,
             'cnpj' => $request->cnpj,
             'vencimento_boleto' => $request->vencimento_boleto,
             'valor' => $request->valor,
             'situacao' => $request->situacao,
-            'lista_controle_id' => $request->id_lista
+            'lista_controle_id' => 1
         ]);
 
-        return redirect()->route('controles.show', ['id' => 0]) - with('msg', ['']);
+        return redirect()->route('controles.show', ['id' => 0]) - with('msg', ['asdf']);*/
     }
 
 
@@ -39,25 +39,24 @@ class ItensListaControlesController extends Controller
 
     public function edit($id)
     {
-        dd($id);
         $item = ItensListaControle::findOrFail($id);
-        
+
         return view('controle.itens_lista.edit', compact('item'));
     }
 
     public function update(Request $request, $id)
     {
+        //dd($request->all());
         $item = ItensListaControle::findOrFail($id);
         $item->update([
-            'lista_controle_id' => $id,
             'razao_social' => $request->razao_social,
             'cnpj' => $request->cnpj,
             'vencimento_boleto' => $request->vencimento_boleto,
             'valor' => $request->valor,
-
+            'situacao' => $request->situacao
         ]);
 
-        return redirect('controles.show', ['id' => $id])->with('msg', ['Item atualizado com sucesso!']);
+        return redirect()->route('controles.show', ['id' => $request->lista_controle_id])->with('msg', ['Item atualizado com sucesso!']);
     }
 
     /**

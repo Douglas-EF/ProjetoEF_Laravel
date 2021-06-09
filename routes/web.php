@@ -35,8 +35,8 @@ Route::post('compras/item/update/{id}', [Controllers\ItensListaCompraController:
 // ROUTS ITENS LISTA CONTROLE
 Route::get('/controles/item/create/{lista}', [Controllers\ItensListaControlesController::class, 'create'])->name('item_controle.create');
 Route::post('/controles/item/store', [Controllers\ItensListaControlesController::class, 'store'])->name('item_controle.store');
-Route::get('/controles/item/edit/{id}', [Controllers\ItensListaControlesController::class, 'store'])->name('item_controle.edit');
-Route::post('/controles/item/update/{id}', [Controllers\ItensListaControlesController::class, 'store'])->name('item_controle.update');
+Route::get('/controles/item/edit/{id}', [Controllers\ItensListaControlesController::class, 'edit'])->name('item_controle.edit');
+Route::post('/controles/item/update/{id}', [Controllers\ItensListaControlesController::class, 'update'])->name('item_controle.update');
 
 // ROUTS CONTROLES
 Route::get('/controles', [Controllers\ListaControlesController::class, 'index'])->name('controles.index');
@@ -67,7 +67,3 @@ Route::any('produtos/search', [Controllers\ProdutosController::class, 'search'])
 
 // ROUTS USUARIOS
 Route::get('/usuarios', [Controllers\UsuariosController::class, 'index'])->name('usuarios.index');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
