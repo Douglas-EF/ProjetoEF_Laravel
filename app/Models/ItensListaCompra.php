@@ -18,4 +18,9 @@ class ItensListaCompra extends Model
     protected $attributes = [
         'ativo_id' => true
     ];
+
+    public function itens()
+    {
+        return $this->hasMany(ItensListaCompra::class, 'lista_compra_id');
+    }
 }

@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItensListaControle extends Model
+class ItensCotacoes extends Model
 {
     use HasFactory;
 
-    protected $table = 'itens_listas_controles';
-
-    protected $guarded = [];
+    protected $table = 'itens_cotacoes';
 
     public $timestamps = false;
 
-    protected $dates = ['vencimento_boleto'];
+    protected $guarded = [];
 
     protected $attributes = [
-        'ativo_id' => true
+        'sd_avaliacao_id' => 1,
+        'sd_situacao_avaliacao_id' => 1,
+        'ativo_id' => true,
     ];
 }

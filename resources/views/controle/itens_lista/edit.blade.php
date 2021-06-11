@@ -28,7 +28,7 @@
             </div>
 
             <div class="input-field col s4">
-                <input type="date" name="vencimento_boleto" value="{{$item->vencimento_boleto}}" required>
+                <input type="date" name="vencimento_boleto" value="{{$item->vencimento_boleto->format('Y-m-d')}}" required>
                 <label for="data_vencimento">Data de Vencimento</label>
             </div>
 
@@ -45,8 +45,5 @@
             <a href="{{ route('controles.show', ['id' => $item->lista_controle_id])}}" class="btn red">CANCELAR</a>
         </form>
     </div>
-
 </div>
-
-</form>
 @endsection

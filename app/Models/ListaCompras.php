@@ -21,7 +21,7 @@ class ListaCompras extends Model
         'ativo_id' => true
     ];
 
-    public function itens_lista()
+    public function itens_lista_compra()
     {
         return $this->hasMany(
             ItensListaCompra::class, 

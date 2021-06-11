@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ListaCompras;
 use App\Models\ItensListaCompra;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class ItensListaCompraController extends Controller
 {
@@ -31,7 +32,6 @@ class ItensListaCompraController extends Controller
 
     public function show($id)
     {
-        
     }
 
     public function edit($id)
@@ -56,6 +56,10 @@ class ItensListaCompraController extends Controller
 
     public function destroy($id)
     {
-        //
+        $item = ItensListaCompra::findOrFail($id);
+
+        $item->update(['ativo_id' => false]);
+
+        return redirect()->route('compras.show', ['id' => $item->lista_compra_id])->with('msg', ['Produto deletado com sucesso!']);
     }
 }

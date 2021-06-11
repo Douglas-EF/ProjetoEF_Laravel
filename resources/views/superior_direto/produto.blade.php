@@ -23,8 +23,6 @@
                     <th class="white-text">Quantidade</th>
                 </tr>
             </thead>
-            <!-- $sql = "SELECT * FROM itens_lista INNER JOIN lista ON lista.id_list = itens_lista.fk_id_list AND itens_lista.fk_avaliacao_sd = 1 AND itens_lista.fk_ativacao = true" -->
-
             <tbody>
                 <tr>
                     <td>{}</td>

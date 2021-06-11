@@ -22,8 +22,8 @@
                 @foreach($cotacoes as $dados)
                 <tr>
                     <td>{{$dados->nome}}</td>
-                    <td>{{$dados->StatusAvaliacaoSD->nome}}</td>
-                    <td><a href="" class="btn-floating waves-effect waves-light blue-grey tooltipped" data-position="left" data-tooltip="Abrir lista da cotação"><i><img src="/img/open_list.png"></i></a></td>
+                    <td></td>
+                    <td><a href="{{ route('cotacoes.show', ['id' => $dados->id]) }}" class="btn-floating waves-effect waves-light blue-grey tooltipped" data-position="left" data-tooltip="Abrir lista da cotação"><i><img src="/img/open_list.png"></i></a></td>
                     <td><a href="" class="btn-floating waves-effect waves-light blue tooltipped" data-position="right" data-tooltip="Enviar para avaliação do SD"><i class="material-icons">send</i></a></td>
                 </tr>
                 @endforeach

@@ -11,4 +11,10 @@ class CotacoesController extends Controller
         $cotacoes = Cotacoes::where('ativo_id', true)->where('sd_avaliacao_cotacao_id', 1)->get();
         return view('cotacao.index', compact('cotacoes'));
     }
+
+    public function show($id)
+    {
+        $cotacoes = Cotacoes::findOrFail($id);
+        return view('cotacao.itens', compact('cotacoes'));
+    }
 }

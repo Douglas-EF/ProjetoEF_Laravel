@@ -22,11 +22,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($controle->itens_lista_controle as $dados)
+                @foreach($controle->itens_lista_controle->where('ativo_id', '1') as $dados)
                 <tr data-id="{{$dados->id}}">
                     <td>{{ $dados->razao_social }}</td>
                     <td>{{ $dados->cnpj}}</td>
-                    <td>{{ $dados->vencimento_boleto }}</td>
+                    <td>{{ $dados->vencimento_boleto->format('d/m/Y') }}</td>
                     <td>{{ $dados->valor }}</td>
                     <td>{{ $dados->situacao }}</td>
                     <td><a href="{{ route('item_controle.edit', ['id' => $dados->id]) }}" class="btn-floating waves-effect waves-light green"><i class="material-icons">edit</i></a></td>
@@ -41,7 +41,7 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <h5>EXCLUIR ITEM</h5>
-        <p>Tem certeza que deseja excluir este item da lista de controle?</p><br>
+        <p>Tem certeza que deseja excluir este item da lista({{$controle->nome}})?</p><br>
         <form method="POST">
             @csrf
             <div class="modal-footer">
@@ -53,9 +53,9 @@
 </div>
 
 <script>
-    /*$("tr").click(function() {
-        $('.modal form').attr('action', '/compras/destroy/' + $(this).data('id'));
-    });*/
+    $("tr").click(function() {
+        $('.modal form').attr('action', '/controles/item/destroy/' + $(this).data('id'));
+    });
 </script>
 
 @endsection

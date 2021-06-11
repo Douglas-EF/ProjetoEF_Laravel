@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($compra->itens_lista as $dados)
+                @foreach($compra->itens_lista_compra->where('ativo_id', '1') as $dados)
                 <tr data-id="{{$dados->id}}">
                     <td>{{ $dados->nome }}</td>
                     <td>{{ $dados->quantidade}}</td>
@@ -41,8 +41,8 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <h5>EXCLUIR PRODUTO</h5>
-        <p>Tem certeza que deseja excluir este produto desta lista de compra?</p><br>
-        <form action="" method="">
+        <p>Tem certeza que deseja excluir este produto desta lista({{$compra->nome}})?</p><br>
+        <form method="POST">
             @csrf
             <div class="modal-footer">
                 <button type="submit" name="btn_confirmar" class="btn waves-effect waves-light red">CONFIRMAR</button>
@@ -53,9 +53,9 @@
 </div>
 
 <script>
-    /*$("tr").click(function() {
-        $('.modal form').attr('action', '/compras/destroy/' + $(this).data('id'));
-    });*/
+    $("tr").click(function() {
+        $('.modal form').attr('action', '/compras/item/destroy/' + $(this).data('id'));
+    });
 </script>
 
 @endsection
